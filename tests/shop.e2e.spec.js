@@ -13,7 +13,7 @@ test.describe('Shop Feature', () => {
     await shopPage.goto();
   })
 
-  test('Test that user can sort alphabetically Z -> A', async ({ page }) => {
+  test('Test that user can sort alphabetically Z -> A', async () => {
     /*
       1. Sort z-a
       2. Get all product titles
@@ -27,7 +27,7 @@ test.describe('Shop Feature', () => {
     expect(titleArray).toEqual(sortedArray);
   })
 
-  test('Test that user can sort alphabetically A -> Z', async ({ page }) => {
+  test('Test that user can sort alphabetically A -> Z', async () => {
     /*
       1. Sort z-a first to make sure default sorting doesnt hinder result
       2. Sort a-z
@@ -42,7 +42,7 @@ test.describe('Shop Feature', () => {
     expect(titleArray).toEqual(sortedArray);
   })
 
-  test('Test that user can sort products by price High to Low', async ({ page }) => {
+  test('Test that user can sort products by price High to Low', async () => {
     await shopPage.selectSorting('hilo')
     const numericalPriceArray = await shopPage.getAllProductPricesNumerical();
     console.log(numericalPriceArray)
@@ -51,7 +51,7 @@ test.describe('Shop Feature', () => {
     console.log(sortedPriceArray)
     expect(numericalPriceArray).toEqual(sortedPriceArray);
   })
-  test('Test that user can sort products by price Low to High', async ({ page }) => {
+  test('Test that user can sort products by price Low to High', async () => {
     await shopPage.selectSorting('lohi')
     const numericalPriceArray = await shopPage.getAllProductPricesNumerical();
     console.log(numericalPriceArray)
@@ -61,14 +61,14 @@ test.describe('Shop Feature', () => {
     expect(numericalPriceArray).toEqual(sortedPriceArray);
   })
 
-  test('When user adds a product to cart it is visible in the navbar', async ({ page }) => {
+  test('When user adds a product to cart it is visible in the navbar', async () => {
     await shopPage.addFirstProductToCart()
     let amountOfProductsInCart = parseInt(await shopPage.shoppingCartBadge.innerText());
     expect(amountOfProductsInCart).toEqual(1)
 
   })
 
-  test('When user removes all product from shopping cart it is no longer visible in the navbar', async ({ page }) => {
+  test('When user removes all product from shopping cart it is no longer visible in the navbar', async () => {
     await shopPage.addFirstProductToCart()
     await expect(shopPage.shoppingCartBadge).toBeVisible()
     await shopPage.removeFirstProductFromCart()
