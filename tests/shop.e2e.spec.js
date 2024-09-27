@@ -5,7 +5,7 @@ const { assert } = require('console');
 const { text } = require('stream/consumers');
 require('dotenv').config();
 
-test.describe('Shop Feature', () => {
+test.describe('Shop Feature',{tag:'@e2e'}, () => {
   test.describe.configure({ mode: 'parallel' });
   let shopPage;
   test.beforeEach(async ({ page }) => {

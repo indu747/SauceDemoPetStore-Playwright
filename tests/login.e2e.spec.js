@@ -4,10 +4,9 @@ const { LoginPage } = require('../pageObjects/loginPage.js');
 const { log } = require('console');
 require('dotenv').config();
 
-
-
 test.use({ storageState: { cookies: [], origins: [] } });
-test.describe('Login Feature', () => {
+
+test.describe('Login Feature',{tag:'@e2e'}, () => {
   let loginPage;
 
   test.beforeEach(async ({ page }) => {
